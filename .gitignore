@@ -1,0 +1,18 @@
+# Go
+*.exe
+*.out
+.env
+vendor/
+
+# Java
+*.class
+*.jar
+build/
+target/
+.gradle/
+
+# Editor/OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
