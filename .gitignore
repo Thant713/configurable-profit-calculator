@@ -4,16 +4,7 @@
 .env
 vendor/
 
-# Java
-*.class
-*.jar
-build/
-target/
-.gradle/
+# SQL
+items.db
 
-# Editor/OS
-.DS_Store
-.vscode/
-.idea/
-*.swp
-/
+
