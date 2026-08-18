@@ -2,27 +2,19 @@
 
 ### Startup
 
-- Prompt: "Choose mode: 1. Manual 2. Auto-fetch 1 necklace 3. Auto-fetch all necklaces"
+- Prompt: "Choose mode: 1) Adjust items 2) View items"
 
-### Phase 1: Manual Profit Calculator
+### Phase 1: Adjust Items
 
-- User inputs Product's Instant Buy price(user is selling at), Ingredient 1's Instant sell price(user is buying at), Ingredient 2's Instant sell price(user is buying at)
-- Error and exit if sell price exceeds 250,000,000 gp
-- 2% GE tax applied to the Product's Instant Buy price(user is selling at), rounded down to the nearest whole gp
-- Prints results to terminal in fixed columns:
-  Profit/Item | Product's Instant Buy price(user is selling at) | Ingredient 1's Instant sell price(user is buying at) | Ingredient 2's Instant sell price(user is buying at)
-- Column positions are fixed — ingredient 1 and 2 never swap
-- If item is a known craftable necklace (stored in necklaces.db), updates that necklace's row
-- Custom items display results in terminal only; nothing saved
+- 1a) Add — prompt for item name, sell price, buy price 1, buy price 2; insert into items.db
+- 1b) Edit — list items, select one, update fields
+- 1c) Remove — list items, select one, delete from items.db
+- 2% GE tax applied to sell price, capped at 5,000,000 GP
+- Tax: 0 GP if sell price < 50 GP
+- Profit per item calculated based on tax
 
-### Phase 2: Automatic Profit Calculator for Each Necklace
+### Phase 2: View Items
 
-- User inputs an item name (e.g., diamond necklace)
-- Go fetches current high/low prices from the OSRS Wiki Real-time Prices API
-- Does phase 1 tasks automatically
+- 2a) View existing items — display all items from items.db using sqlite3
+- 2b) Update existing items — fetch current prices from OSRS Wiki API for all items, update items.db, display results
 - Prints connection/API error if the API is unavailable
-
-### Phase 3: Automatic Profit Calculator for All Craftable Necklaces
-
-- Lists all craftable necklaces defined in necklaces.db
-- Does phase 2 tasks automatically

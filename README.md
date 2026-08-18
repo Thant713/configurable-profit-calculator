@@ -8,12 +8,6 @@ I wanted to build something that allows me to quickly compare the profit differe
 
 ## Features
 
-- Calculate profit per item with GE tax adjusted automatically
-- Manual input mode for any custom methods
-- Auto-fetch live prices from OSRS Wiki API
-- Auto-calculate all craftable necklaces
-- Save results to SQLite database
-
 ## Tech Stack
 
 - **Language:** Go
@@ -21,7 +15,7 @@ I wanted to build something that allows me to quickly compare the profit differe
 
 ## Status
 
-Currently in development — Manual Profit Calculator
+Currently in development —
 
 ## License
 
