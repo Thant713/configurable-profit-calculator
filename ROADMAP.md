@@ -25,9 +25,9 @@
 - Item name
 - ROI percentage
 - Profit per item
-- Product's instant buy price (user is selling at)
-- Gold bar's instant sell price (user is buying at)
-- Gem's instant sell price (user is buying at)
+- Product's sell price — what the user sells it for (high field)
+- Gold bar's buy price — what the user pays for it (low field)
+- Gem's buy price — what the user pays for it (low field)
 
 ### Future Considerations
 
