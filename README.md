@@ -30,7 +30,3 @@ Currently in development — API fetch and display in progress.
 MIT
 
 ## How to Run
-
-```bash
-go run .
-```

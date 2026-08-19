@@ -20,18 +20,16 @@
 - 2% of sell price if >= 50 GP, else 0
 - Tax capped at 5,000,000 GP
 
-### TODO
+### Column Definitions
 
-- Fetch specific prices from OSRS Wiki API:
-  - Item Name
-  - ROI percentage
-  - Profit/Item
-  - Input Product's Instant Buy price (user is selling at)
-  - Input Gold bar's Instant sell price (user is buying at)
-  - Input Gem's Instant sell price (user is buying at)
+- Item name
+- ROI percentage
+- Profit per item
+- Product's instant buy price (user is selling at)
+- Gold bar's instant sell price (user is buying at)
+- Gem's instant sell price (user is buying at)
 
 ### Future Considerations
 
 - SQLite database for persistence
-- Manual input mode
-- Budget input
+- Manual inputs and expanding what you can calculate within the cli
