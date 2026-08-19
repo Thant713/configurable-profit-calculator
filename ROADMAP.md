@@ -1,20 +1,37 @@
 # Configurable Profit Calculator — Roadmap
 
-### Startup
+### Preset Necklaces
 
-- Prompt: "Choose mode: 1) Adjust items 2) View items"
+- Gold necklace — 1 ingredient: Gold bar
+- Sapphire necklace — 2 ingredients: Gold bar + Sapphire
+- Emerald necklace — 2 ingredients: Gold bar + Emerald
+- Ruby necklace — 2 ingredients: Gold bar + Ruby
+- Diamond necklace — 2 ingredients: Gold bar + Diamond
 
-### Phase 1: Adjust Items
+### Display
 
-- 1a) Add — prompt for item name, sell price, buy price 1, buy price 2; insert into items.db
-- 1b) Edit — list items, select one, update fields
-- 1c) Remove — list items, select one, delete from items.db
-- 2% GE tax applied to sell price, capped at 5,000,000 GP
-- Tax: 0 GP if sell price < 50 GP
-- Profit per item calculated based on tax
+- Auto-fetch prices from OSRS Wiki API on launch
+- Display all 5 necklaces sorted by ROI percentage
+- Columns: Item Name | ROI% | Profit/Item | Sell Price | Gold Bar Price | Gem Price
+- fmt.Printf in Go for display (no sqlite3 CLI)
 
-### Phase 2: View Items
+### Tax Rules
 
-- 2a) View existing items — display all items from items.db using sqlite3
-- 2b) Update existing items — fetch current prices from OSRS Wiki API for all items, update items.db, display results
-- Prints connection/API error if the API is unavailable
+- 2% of sell price if >= 50 GP, else 0
+- Tax capped at 5,000,000 GP
+
+### TODO
+
+- Fetch specific prices from OSRS Wiki API:
+  - Item Name
+  - ROI percentage
+  - Profit/Item
+  - Input Product's Instant Buy price (user is selling at)
+  - Input Gold bar's Instant sell price (user is buying at)
+  - Input Gem's Instant sell price (user is buying at)
+
+### Future Considerations
+
+- SQLite database for persistence
+- Manual input mode
+- Budget input
