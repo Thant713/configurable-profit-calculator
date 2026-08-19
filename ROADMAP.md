@@ -1,4 +1,4 @@
-# Configurable Profit Calculator — Roadmap
+# OSRS Necklace Profit — Roadmap
 
 ### Preset Necklaces
 
