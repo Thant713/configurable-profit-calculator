@@ -13,7 +13,7 @@
 - Auto-fetch prices from OSRS Wiki API on launch
 - Display all 5 necklaces sorted by ROI percentage
 - Columns: Item Name | ROI% | Profit/Item | Sell Price | Gold Bar Price | Gem Price
-- fmt.Printf in Go for display (no sqlite3 CLI)
+- fmt.Printf in Go for display
 
 ### Tax Rules
 

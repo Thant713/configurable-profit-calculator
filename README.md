@@ -20,7 +20,6 @@ A CLI profit calculator for F2P OSRS necklaces.
 ## Tech Stack
 
 - **Language:** Go
-- **Database:** SQLite (planned)
 
 ## Status
 
