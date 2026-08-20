@@ -1,3 +1,3 @@
-module osrs-necklace-profit
+module necklace-to-bond
 
 go 1.26.4

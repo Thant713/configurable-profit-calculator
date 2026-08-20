@@ -1,19 +1,6 @@
-# OSRS Necklace Profit — Roadmap
-
-### Preset Necklaces
-
-- Gold necklace — 1 ingredient: Gold bar
-- Sapphire necklace — 2 ingredients: Gold bar + Sapphire
-- Emerald necklace — 2 ingredients: Gold bar + Emerald
-- Ruby necklace — 2 ingredients: Gold bar + Ruby
-- Diamond necklace — 2 ingredients: Gold bar + Diamond
+# Roadmap
 
 ### Display
-
-- Auto-fetch prices from OSRS Wiki API on launch
-- Display all 5 necklaces sorted by ROI percentage
-- Columns: Item Name | ROI% | Profit/Item | Sell Price | Gold Bar Price | Gem Price
-- fmt.Printf in Go for display
 
 ### Tax Rules
 
@@ -23,13 +10,9 @@
 ### Column Definitions
 
 - Item name
-- ROI percentage
 - Profit per item
 - Product's sell price — what the user sells it for (high field)
 - Gold bar's buy price — what the user pays for it (low field)
 - Gem's buy price — what the user pays for it (low field)
 
 ### Future Considerations
-
-- SQLite database for persistence
-- Manual inputs and expanding what you can calculate within the cli
