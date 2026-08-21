@@ -4,3 +4,9 @@
 .env
 vendor/
 
+# ai
+MISSION.md
+NOTES.md
+
+#misc
+necklace-to-bond
