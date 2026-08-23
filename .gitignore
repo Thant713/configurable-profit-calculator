@@ -4,7 +4,7 @@
 .env
 vendor/
 
-# ai
+# matt-pocock-skills + ai
 MISSION.md
 NOTES.md
 learning-records/
@@ -12,5 +12,5 @@ AGENTS.md
 CONTEXT.md
 docs/
 
-#misc
+# misc
 necklace-to-bond
