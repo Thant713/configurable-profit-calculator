@@ -10,10 +10,10 @@ import (
 const baseURL = "https://prices.runescape.wiki/api/v1/osrs/latest"
 
 type APIResponse struct {
-	Data map[string]PriceEntry `json:"data"`
+	Data map[string]Quote `json:"data"`
 }
 
-type PriceEntry struct {
+type Quote struct {
 	High int `json:"high"`
 	Low  int `json:"low"`
 }
@@ -25,28 +25,28 @@ const (
 	bondID        = 13190
 )
 
-func fetchItemPrice(id int) (price PriceEntry, err error) {
+func fetchItemQuote(id int) (Quote, error) {
 	req, err := http.NewRequest("GET", baseURL+"?id="+strconv.Itoa(id), nil)
 	if err != nil {
-		return PriceEntry{}, err
+		return Quote{}, err
 	}
 	req.Header.Set("User-Agent", "necklace-to-bond - @milkyholme on Discord")
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return PriceEntry{}, err
+		return Quote{}, err
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return PriceEntry{}, fmt.Errorf("item %d: bad status %s", id, resp.Status)
+		return Quote{}, fmt.Errorf("item %d: bad status %s", id, resp.Status)
 	}
 	var response APIResponse
 	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
-		return PriceEntry{}, fmt.Errorf("item %d: decode: %w", id, err)
+		return Quote{}, fmt.Errorf("item %d: decode: %w", id, err)
 	}
-	price, ok := response.Data[strconv.Itoa(id)]
+	quote, ok := response.Data[strconv.Itoa(id)]
 	if !ok {
-		return PriceEntry{}, fmt.Errorf("item %d: not in response", id)
+		return Quote{}, fmt.Errorf("item %d: not in response", id)
 	}
-	return price, nil
+	return quote, nil
 }

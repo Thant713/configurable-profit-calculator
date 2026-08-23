@@ -6,12 +6,12 @@ import (
 )
 
 func main() {
-	items := []int{goldBarID, diamondNeckID, diamondID, bondID}
-	for _, item := range items {
-		bothIds, err := fetchItemPrice(item)
+	itemIDs := []int{goldBarID, diamondNeckID, diamondID, bondID}
+	for _, id := range itemIDs {
+		quote, err := fetchItemQuote(id)
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(item, bothIds)
+		fmt.Println(id, quote)
 	}
 }

@@ -7,6 +7,7 @@ type Item struct {
 	gemPrice  int
 }
 
-// TODO: Fetch prices from OSRS Wiki API
-// TODO: Calculate profit and ROI
-// TODO: Display results
+func profit(necklace, gem, gold int) int {
+	
+} 
+
