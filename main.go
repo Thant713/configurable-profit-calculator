@@ -1,17 +1,12 @@
 package main
 
-import (
-	"fmt"
-	"log"
-)
-
 func main() {
-	itemIDs := []int{goldBarID, diamondNeckID, diamondID, bondID}
-	for _, id := range itemIDs {
-		quote, err := fetchItemQuote(id)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(id, quote)
-	}
+	// itemIDs := []int{goldBarID, diamondNeckID, diamondID, bondID}
+	// for _, id := range itemIDs {
+	// 	quote, err := fetchItemQuote(id)
+	// 	if err != nil {
+	// 		log.Fatal(err)
+	// 	}
+	// }
+	diamond := quote.High
 }
