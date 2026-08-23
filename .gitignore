@@ -4,7 +4,7 @@
 .env
 vendor/
 
-# personal notes
+# ai
 MISSION.md
 NOTES.md
 learning-records/
