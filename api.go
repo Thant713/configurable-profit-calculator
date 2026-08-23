@@ -22,9 +22,10 @@ const (
 	goldBarID     = 2357
 	diamondNeckID = 1662
 	diamondID     = 1601
+	bondID        = 13190
 )
 
-func fetchItemPrice(id int) (p PriceEntry, err error) {
+func fetchItemPrice(id int) (price PriceEntry, err error) {
 	req, err := http.NewRequest("GET", baseURL+"?id="+strconv.Itoa(id), nil)
 	if err != nil {
 		return PriceEntry{}, err
@@ -39,13 +40,13 @@ func fetchItemPrice(id int) (p PriceEntry, err error) {
 	if resp.StatusCode != http.StatusOK {
 		return PriceEntry{}, fmt.Errorf("item %d: bad status %s", id, resp.Status)
 	}
-	var r APIResponse
-	if err := json.NewDecoder(resp.Body).Decode(&r); err != nil {
+	var response APIResponse
+	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
 		return PriceEntry{}, fmt.Errorf("item %d: decode: %w", id, err)
 	}
-	p, ok := r.Data[strconv.Itoa(id)]
+	price, ok := response.Data[strconv.Itoa(id)]
 	if !ok {
 		return PriceEntry{}, fmt.Errorf("item %d: not in response", id)
 	}
-	return p, nil
+	return price, nil
 }
