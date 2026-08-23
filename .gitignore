@@ -4,9 +4,13 @@
 .env
 vendor/
 
-# ai
+# personal notes
 MISSION.md
 NOTES.md
+learning-records/
+AGENTS.md
+CONTEXT.md
+docs/
 
 #misc
 necklace-to-bond
