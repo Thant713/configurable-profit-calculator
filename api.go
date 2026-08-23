@@ -25,28 +25,32 @@ const (
 	bondID        = 13190
 )
 
-func fetchItemQuote(id int) (Quote, error) {
-	req, err := http.NewRequest("GET", baseURL+"?id="+strconv.Itoa(id), nil)
+func fetchAllQuotes() (map[int]Quote, error) {
+	req, err := http.NewRequest("GET", baseURL, nil)
 	if err != nil {
-		return Quote{}, err
+		return nil, err
 	}
 	req.Header.Set("User-Agent", "necklace-to-bond - @milkyholme on Discord")
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return Quote{}, err
+		return nil, err
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return Quote{}, fmt.Errorf("item %d: bad status %s", id, resp.Status)
+		return nil, fmt.Errorf("bad status %s", resp.Status)
 	}
 	var response APIResponse
 	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
-		return Quote{}, fmt.Errorf("item %d: decode: %w", id, err)
+		return nil, fmt.Errorf("decode: %w", err)
 	}
-	quote, ok := response.Data[strconv.Itoa(id)]
-	if !ok {
-		return Quote{}, fmt.Errorf("item %d: not in response", id)
+	quotes := make(map[int]Quote, len(response.Data))
+	for id, quote := range response.Data {
+		intID, err := strconv.Atoi(id)
+		if err != nil {
+			return nil, fmt.Errorf("item id %q: not a number", id)
+		}
+		quotes[intID] = quote
 	}
-	return quote, nil
+	return quotes, nil
 }

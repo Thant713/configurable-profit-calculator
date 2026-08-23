@@ -8,5 +8,5 @@ func main() {
 	// 		log.Fatal(err)
 	// 	}
 	// }
-	diamond := quote.High
+	diamond := fetchItemQuote(diamondID)
 }
