@@ -5,9 +5,12 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 const baseURL = "https://prices.runescape.wiki/api/v1/osrs/latest"
+
+var client = &http.Client{Timeout: 10 * time.Second}
 
 type APIResponse struct {
 	Data map[string]Quote `json:"data"`
@@ -32,7 +35,7 @@ func fetchAllQuotes() (map[int]Quote, error) {
 	}
 	req.Header.Set("User-Agent", "necklace-to-bond - @milkyholme on Discord")
 
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}
