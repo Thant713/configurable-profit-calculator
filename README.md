@@ -6,7 +6,7 @@ A CLI tool for F2P OSRS: see diamond necklace crafting profit and bond price.
 
 - Fetches live prices for all items in one request from the OSRS Wiki API
 - Calculates profit per diamond necklace after the 2% GE tax
-- Prints an aligned table: product, profit, sell price, both buy prices, bond price
+- Prints a table: product name, profit per item, sell price of the product, both buy prices of the ingredients, bond price (buy low, sell high)
 - Prices from the [OSRS Wiki real-time API](https://oldschool.runescape.wiki/w/RuneScape:Real-time_Prices)
 
 ## Example Output
