@@ -1,14 +1,21 @@
 package main
 
 type Item struct {
-	name      string
-	sellPrice int
-	gemPrice  int
-	goldPrice int
+	name  string
+	price int
 }
 
-func (it Item) profit(tax int) int {
-	return it.sellPrice - it.gemPrice - it.goldPrice - tax
+type Recipe struct {
+	product     Item
+	ingredients []Item
+}
+
+func (r Recipe) profit(taxAmt int) int {
+	total := r.product.price
+	for _, ing := range r.ingredients {
+		total -= ing.price
+	}
+	return total - taxAmt
 }
 
 func tax(price int) int {
