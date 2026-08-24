@@ -7,7 +7,7 @@ type Item struct {
 	goldPrice int
 }
 
-func profit(it Item, tax int) int {
+func (it Item) profit(tax int) int {
 	return it.sellPrice - it.gemPrice - it.goldPrice - tax
 }
 
