@@ -48,10 +48,12 @@
       <thead>
         <tr>
           <th>Product</th>
+          <th>pSell</th>
+          <th>i1Buy</th>
+          <th>i1Sell</th>
+          <th>i2Buy</th>
+          <th>i2Sell</th>
           <th>Profit</th>
-          <th>Sell</th>
-          <th>Buy1</th>
-          <th>Buy2</th>
           <th>Bond</th>
         </tr>
       </thead>
@@ -77,14 +79,17 @@
           const res = await fetch(url);
           if (!res.ok) throw new Error("bad status " + res.status);
           const { data } = await res.json();
-          const sell = data[ids.diamondNecklace].high;
-          const gem = data[ids.diamond].low;
-          const bar = data[ids.goldBar].low;
-          const bond = data[ids.bond].low;
-          const profit = sell - gem - bar - tax(sell);
+          const px = (id) => data[id];
+          const necklace = px(ids.diamondNecklace);
+          const bar = px(ids.goldBar);
+          const gem = px(ids.diamond);
+          const bond = px(ids.bond);
+          const profit = necklace.high - gem.low - bar.low - tax(necklace.high);
           document.querySelector("#out tbody").innerHTML =
-            `<tr><td>Diamond necklace</td><td>${profit}</td><td>${sell}</td>` +
-            `<td>${bar}</td><td>${gem}</td><td>${bond}</td></tr>`;
+            `<tr><td>dia nklc</td><td>${necklace.high}</td>` +
+            `<td>${bar.low}</td><td>${bar.high}</td>` +
+            `<td>${gem.low}</td><td>${gem.high}</td>` +
+            `<td>${profit}</td><td>${bond.low}</td></tr>`;
           document.getElementById("out").hidden = false;
           status.textContent = "";
         } catch (e) {

@@ -1,8 +1,13 @@
 package main
 
 type Item struct {
-	name  string
-	price int
+	name string
+	buy  int
+	sell int
+}
+
+func item(name string, q Quote) Item {
+	return Item{name: name, buy: q.Low, sell: q.High}
 }
 
 type Recipe struct {
@@ -11,9 +16,9 @@ type Recipe struct {
 }
 
 func (r Recipe) profit(taxAmt int) int {
-	total := r.product.price
+	total := r.product.sell
 	for _, ing := range r.ingredients {
-		total -= ing.price
+		total -= ing.buy
 	}
 	return total - taxAmt
 }
