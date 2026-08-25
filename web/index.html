@@ -36,6 +36,30 @@
       tbody tr:hover {
         background: #1c2029;
       }
+      @media (max-width: 30rem) {
+        table,
+        tbody,
+        tr,
+        td {
+          display: block;
+          width: 100%;
+        }
+        thead {
+          display: none;
+        }
+        tr {
+          padding: 0.5rem 0;
+        }
+        td {
+          display: flex;
+          justify-content: space-between;
+          gap: 1rem;
+        }
+        td::before {
+          content: attr(data-label);
+          color: #9aa3b2;
+        }
+      }
       #status {
         color: #e05561;
       }
@@ -85,11 +109,16 @@
           const gem = px(ids.diamond);
           const bond = px(ids.bond);
           const profit = necklace.high - gem.low - bar.low - tax(necklace.high);
+          const cell = (label, value) => `<td data-label="${label}">${value}</td>`;
           document.querySelector("#out tbody").innerHTML =
-            `<tr><td>dia nklc</td><td>${necklace.high}</td>` +
-            `<td>${bar.low}</td><td>${bar.high}</td>` +
-            `<td>${gem.low}</td><td>${gem.high}</td>` +
-            `<td>${profit}</td><td>${bond.low}</td></tr>`;
+            cell("Product", "dia nklc") +
+            cell("pSell", necklace.high) +
+            cell("i1Buy", bar.low) +
+            cell("i1Sell", bar.high) +
+            cell("i2Buy", gem.low) +
+            cell("i2Sell", gem.high) +
+            cell("Profit", profit) +
+            cell("Bond", bond.low);
           document.getElementById("out").hidden = false;
           status.textContent = "";
         } catch (e) {
